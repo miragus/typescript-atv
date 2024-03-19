@@ -148,7 +148,7 @@ class Projeto {
 const projeto1 = new Projeto(
     'Ultra Spam Blocker',
     'Bloqueia todas as chamadas indesejadas pelo usuário.',
-    'qTest e TestLink',
+    'qTest e TestLink, HTML e JavaScript',
     new Date('2024-3-18'),
     new Date('2025-5-20'),
     'Em andamento')
@@ -156,12 +156,16 @@ projeto1.mostrarDados()
 
 console.log('===================================================================')
 
-class Tarefa {
+class Tarefa extends Projeto {
     constructor(
-        protected nome: string,
-        protected descricao: string,
+        nome: string,
+        descricao: string,
         protected responsavel: Funcionario,
-        protected status: string) {
+        status: string,
+        tecnologias: string,
+        data_inicio: Date,
+        data_fim: Date) {
+        super(nome, descricao, tecnologias, data_inicio, data_fim, status)
     }
     mostrarDados() {
         console.log("Tarefas dos desenvolvedores:")
@@ -169,6 +173,10 @@ class Tarefa {
         console.log(`Descrição: ${this.descricao}`)
         console.log(`Dev responsável: ${funcionario1.nome}`)
         console.log(`Status da tarefa: ${this.status}`)
+        console.log(`Tecnologias utilizadas: ${this.tecnologias}`)
+        console.log(`Data de início: ${this.data_inicio.toLocaleDateString('pt-BR')}`)
+        console.log(`Data de término: ${this.data_fim.toLocaleDateString('pt-BR')}`)
+        
     }
     mostrarDados1() {
         console.log("Tarefas dos testadores:")
@@ -176,20 +184,28 @@ class Tarefa {
         console.log(`Descrição: ${this.descricao}`)
         console.log(`Dev responsável: ${funcionario4.nome}`)
         console.log(`Status da tarefa: ${this.status}`)
+        console.log(`Tecnologias utilizadas: ${this.tecnologias}`)
+        console.log(`Data de início: ${this.data_inicio.toLocaleDateString('pt-BR')}`)
+        console.log(`Data de término: ${this.data_fim.toLocaleDateString('pt-BR')}`)
     }
 }
 const tarefa1 = new Tarefa(
     'DEV',
     'irá permitir a capacidade do usuário interagir',
     funcionario1,
-    'pendente')
+    'pendente',
+    'HTML e JavaScript',
+    new Date('2024-1-10'),
+    new Date ('2025-1-10'))
 const tarefa2 = new Tarefa(
     'Teste',
     'irão testar o projeto',
     funcionario4,
-    'em andamento'
+    'em andamento',
+    'qTest e TestLink',
+    new Date('2024-5-16'),
+    new Date ('2024-7-16')
 )
 tarefa1.mostrarDados()
 console.log('===================================================================')
 tarefa2.mostrarDados1()
-
